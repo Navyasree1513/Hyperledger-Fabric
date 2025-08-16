@@ -19,11 +19,3 @@ Clone this repository to your local machine:
 ```bash
 git clone https://github.com/yourusername/hyperledger-fabric-asset-management.git
 cd hyperledger-fabric-asset-management
-
-Step 2: Install Hyperledger Fabric Binaries
-Download the Hyperledger Fabric binaries from the Hyperledger Fabric Releases page.
-Extract the binaries and move them to a directory in your PATH:
-
-```bash
-tar -xvf hyperledger-fabric-linux-amd64.tar.gz
-sudo mv bin/* /usr/local/bin/
