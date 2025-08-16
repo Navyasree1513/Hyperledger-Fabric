@@ -1,52 +1,29 @@
 # Hyperledger Fabric Asset Management
 
-This repository contains an internship assignment project implementing an **asset management system** on **Hyperledger Fabric**.
+# Hyperledger Fabric Asset Management System
+## Project Description
+This project implements a blockchain-based system using Hyperledger Fabric to manage and track assets for a financial institution. The system supports creating assets, updating asset values, querying the world state, and retrieving asset transaction history. The assets represent accounts with specific attributes such as DEALERID, MSISDN, MPIN, BALANCE, STATUS, TRANSAMOUNT, TRANSTYPE, and REMARKS.
 
-## Features
-- Fabric test network setup
-- Smart contract in Go (Golang)
-- REST API (Node.js + Fabric SDK)
-- Dockerized REST API
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
+- Docker: Ensure Docker is installed and running on your machine.
+- Docker Compose: Required for managing multi-container Docker applications.
+- Go: Install Go if you are using Golang for the smart contract.
+- Node.js: Install Node.js if you are using JavaScript for the REST API.
+- Git: Required for cloning the repository.
 
-## Asset Schema
-- DEALERID
-- MSISDN
-- MPIN
-- BALANCE
-- STATUS
-- TRANSAMOUNT
-- TRANSTYPE
-- REMARKS
+## Installation
 
-##  Level 1: Setup Test Network
+### Step 1: Clone the Repository
+Clone this repository to your local machine:
 ```bash
-cd fabric-samples/test-network
-./network.sh up createChannel -ca
-```
+git clone https://github.com/yourusername/hyperledger-fabric-asset-management.git
+cd hyperledger-fabric-asset-management
 
-##  Level 2: Deploy Chaincode
+Step 2: Install Hyperledger Fabric Binaries
+Download the Hyperledger Fabric binaries from the Hyperledger Fabric Releases page.
+Extract the binaries and move them to a directory in your PATH:
+
 ```bash
-./network.sh deployCC -ccn assetcc -ccp ../chaincode/asset-transfer-custom -ccl go
-```
-
-Invoke:
-```bash
-peer chaincode invoke -C mychannel -n assetcc -c '{"function":"CreateAsset","Args":["D001","999888777","1234","5000","ACTIVE","0","NA","Initial balance"]}'
-```
-
-##  Level 3: REST API
-```bash
-cd rest-api
-npm install
-node server.js
-```
-
-API Endpoints:
-- POST /create
-- GET /read/:id
-
-##  Dockerize REST API
-```bash
-docker build -t fabric-rest .
-docker run -p 3000:3000 fabric-rest
-```
+tar -xvf hyperledger-fabric-linux-amd64.tar.gz
+sudo mv bin/* /usr/local/bin/
